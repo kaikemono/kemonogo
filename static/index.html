@@ -35,8 +35,8 @@ var tile = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 });
 
 var map = L.map('map', {
-    center: [35.868698,138.276653],
-    zoom: 14,
+    center: [35.63125, 138.42625],
+    zoom: 18,
     zoomControl: true,
     layers: [tile]
 });
@@ -48,7 +48,7 @@ d3.json('/api/' + datestring, function(err,data)
     var points = data;
     console.log(points);
     var heat = L.heatLayer(
-        points.map(function(d) {return [d.latitude, d.longitude, 10];}
+        points.map(function(d) {return [d.latitude, d.longitude, d.value];}
     )
         , {
     radius: 30
