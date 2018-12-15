@@ -19,7 +19,6 @@ def hello():
 
 @app.route('/api/<int:datestr>')
 def api_datestr(datestr):
-    print(moc)
     return jsonify(moc)
 
 
