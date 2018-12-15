@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 
 import os
+import json
 
 from flask import Flask, request, jsonify, render_template
 
 wd = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, static_folder=os.path.join(wd, 'static'))
+
+with open(os.path.join(wd, 'x.json')) as fin:
+    moc = json.load(fin)
+
 
 @app.route("/")
 def hello():
@@ -14,9 +19,7 @@ def hello():
 
 @app.route('/api/<int:datestr>')
 def api_datestr(datestr):
-    return jsonify([
-        {'latitude': 35.868698, 'longitude': 138.276653}
-    ])
+    return jsonify(moc)
 
 
 if __name__ == '__main__':
