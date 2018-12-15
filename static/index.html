@@ -43,9 +43,10 @@ var map = L.map('map', {
 
 var datestring = '20181216';
 
-d3.csv('/api/' + datestring, function(err,data)
+d3.json('/api/' + datestring, function(err,data)
 {
     var points = data;
+    console.log(points);
     var heat = L.heatLayer(
         points.map(function(d) {return [d.latitude, d.longitude, 10];}
     )
